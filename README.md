@@ -1,36 +1,72 @@
-# Education Pals Build Pack
+# Context-Window Reality Checker
 
-- Course: `2ad65768-198c-5614-ba63-948602ecc629`
-- Chapter: `bb222c9d-5a9f-55e8-b690-b591752fdca1`
-- Template: `baw_c002_ch04`
-- Compiled: 2026-07-29T03:19:08.003Z
-- Verification token: `01KYNY44Z3GVA2XM20SJ591011`
-- Composition mode: `shipgen`
-- Workshop publication: `01KYNY44AQF0VTNBEVK1XD8GCM`
-- Proof challenge: `2908035ae2fc50f837b1190365116c1f`
-- Artifact type: `baw.v3`
-- Repository: https://github.com/educationpals-builds/randeep-bhatia-context-window-reality-checker-paste-any-2
+A five-dial framework for evaluating long-context claims before they derail your roadmap.
 
-## Variants
+## How This Checker Was Built
 
-- `README.md` → `README.md`
-- `charter.md` → `charter.md`
-- `blueprints/context-checker.md` → `blueprints/context-checker.md`
-- `prompts/context-check-pack.md` → `prompts/context-check-pack.md`
-- `METHOD.md` → `METHOD.md`
-- `VERIFY.md` → `VERIFY.md`
-- `.ep/provenance.json` → `.ep/provenance.json.md`
-- `skills/context-advisor.skill.md` → `skills/context-advisor.skill.md`
-- `data/seeded-claims.md` → `data/seeded-claims.md`
-- `tests/probe-board.md` → `tests/probe-board.md`
-- `tests/pass-gate.md` → `tests/pass-gate.md`
-- `tests/probes.jsonl` → `tests/probes.jsonl`
-- `tests/run-local.md` → `tests/run-local.md`
-- `STORY.md` → `STORY.md`
+This checker emerged from a real decision: whether to trust a vendor claim that "RAG is dead" and abandon retrieval engineering. Instead of accepting or rejecting the claim on vibes, I ran it through five diagnostic dials that expose what any long-context claim actually demonstrates.
 
-## Files
+The result is a reusable checker you can paste into any conversation to get a structured read on context-window claims.
 
-- `manifest.json` — verification manifest
-- `instructions.md` — paste tips per variant
+## The Worked Example
+
+**The claim:**
+> "RAG is dead. With million-token context windows you paste the whole corpus in and the model attends to everything equally well — retrieval engineering is legacy work."
+
+**Who said it:** LinkedIn post by a long-context vendor's head of product, forwarded by the CEO
+
+**What it decides:** Your reply decides whether next quarter's retrieval roadmap survives review
+
+**Deadline:** Before Thursday's roadmap review
+
+**The job it must do:** Must fetch all the info needed make sure it works.
+
+**Weakest dial:** what_it_must_find
+
+**Verdict:** Must fetch all the info needed, Must fetch all the info needed
+
+See [charter.md](charter.md) for the full five-dial breakdown, flip condition, and the questions sent back.
+
+## Repository Structure
+
+| Path | Purpose |
+|------|---------|
+| `charter.md` | The full worked example with all five dials scored |
+| `blueprints/context-checker.md` | One-paste system instructions for the checker |
+| `prompts/context-check-pack.md` | Five standalone prompts, one per dial |
+| `METHOD.md` | The SIGHT framework explained |
+| `VERIFY.md` | How to verify this checker works |
+| `skills/context-advisor.skill.md` | Portable skill file for assistant runtimes |
+| `data/seeded-claims.md` | Calibration record with seeded claims |
+| `tests/probe-board.md` | All 8 probes with results |
+| `tests/pass-gate.md` | The gate this checker must hold |
+| `tests/probes.jsonl` | Machine-readable probe export |
+| `tests/run-local.md` | Run-anywhere guide |
+| `STORY.md` | The builder's story |
+
+## One-Paste Rebuild
+
+To rebuild this checker in any chat interface:
+
+```
+You are a context-window claim checker. When someone pastes a long-context claim, you:
+
+1. REFUSE to score until they state the specific retrieval job the context window must perform
+2. Run five dials (0-4 each):
+   - what_it_must_find: Is the retrieval task specified?
+   - what_the_context_holds: Is the haystack composition disclosed?
+   - how_relevance_was_measured: Is there a recall-by-depth curve or equivalent?
+   - where_attention_spreads: Are distractor patterns documented?
+   - what_reaches_the_answer: Does output verification show the answer used retrieved content?
+3. Name the weakest dial
+4. State your verdict with the cost of being wrong
+5. List questions to send back to the claimant
+
+Calibration example — see charter.md in this repository.
+```
+
+## License
+
+MIT
 
 <!-- educationpals-build-verified -->
